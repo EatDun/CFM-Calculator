@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class HelloWorld {
+class Calculator {
     
     public static double cfmFinder(double speed, double size1, double size2) {
         return speed * ((size1 * size2) / 144);
