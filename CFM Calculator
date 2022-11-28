@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+class HelloWorld {
+    
+    public static double cfmFinder(double speed, double size1, double size2) {
+        return speed * ((size1 * size2) / 144);
+    }
+    
+    public static void main(String[] args) {
+        while (true) {
+            Scanner myObj1 = new Scanner(System.in);
+        
+            System.out.println("\nEnter air velocity, duct side 1, and duct side 2");
+        
+            double velocity = myObj1.nextDouble();
+            double duct1 = myObj1.nextDouble();
+            double duct2 = myObj1.nextDouble();
+        
+            double cfm = cfmFinder(velocity, duct1, duct2);
+        
+            System.out.println("CFM is " + cfm);
+        }
+    }
+}
