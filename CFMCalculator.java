@@ -2,23 +2,56 @@ import java.util.Scanner;
 
 class Calculator {
     
-    public static double cfmFinder(double speed, double size1, double size2) {
-        return speed * ((size1 * size2) / 144);
+    static Scanner scanner = new Scanner(System.in);
+    
+    public static double cfmCalc() {
+        System.out.println("Enter Duct Width (in inches):");
+        double w = scanner.nextDouble();
+        System.out.println("Enter Duct Height (in inches):");
+        double h = scanner.nextDouble();
+        System.out.println("Enter Air Speed (in feet per minute):");
+        double as = scanner.nextDouble();
+        return ((w * h) / 144) * as;
+    }
+    
+    public static double airSpeedCalc() {
+        System.out.println("Enter Duct Width (in inches):");
+        double w = scanner.nextDouble();
+        System.out.println("Enter Duct Height (in inches):");
+        double h = scanner.nextDouble();
+        System.out.println("Enter CFM:");
+        double cfm = scanner.nextDouble();
+        return cfm / ((w * h) / 144);
+    }
+    
+    public static double ductSizeCalc() {
+        System.out.println("Enter Air Speed (in feet per minute):");
+        double as = scanner.nextDouble();
+        System.out.println("Enter CFM:");
+        double cfm = scanner.nextDouble();
+        return cfm / as;
     }
     
     public static void main(String[] args) {
-        while (true) {
-            Scanner myObj1 = new Scanner(System.in);
         
-            System.out.println("\nEnter air velocity, duct side 1, and duct side 2");
+        System.out.println("Press 1 for CFM\nPress 2 for Air Speed\nPress 3 for Duct Size");
+        int choice = scanner.nextInt();
         
-            double velocity = myObj1.nextDouble();
-            double duct1 = myObj1.nextDouble();
-            double duct2 = myObj1.nextDouble();
-        
-            double cfm = cfmFinder(velocity, duct1, duct2);
-        
-            System.out.println("CFM is " + cfm);
+        switch (choice) {
+            case 1:
+                double answer1 = cfmCalc();
+                System.out.println("The CFM is: " + answer1);
+                break;
+            case 2:
+                double answer2 = airSpeedCalc();
+                System.out.println("The Air Speed is: " + answer2 + " feet per minute");
+                break;
+            case 3:
+                double answer3 = ductSizeCalc();
+                System.out.println("The duct cubic feet is: " + answer3);
+                break;
+            default:
+                System.out.println("Invalid choice.");    
         }
-    }
+    }    
 }
